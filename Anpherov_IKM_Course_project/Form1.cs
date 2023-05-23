@@ -14,18 +14,20 @@
         private void tClock_Tick(object sender, EventArgs e)
         {
             tClock.Stop();
-            MessageBox.Show("Минуло 25 секунд","Увага");
+            MessageBox.Show("Минуло 25 секунд", "Увага");
             tClock.Start();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            MajorObject = new MajorWork();
+            MajorObject.SetTime();
             About A = new About();
             A.tAbout.Start();
             A.ShowDialog();
-            MajorObject = new MajorWork();  
             this.Mode = true;
-            
+
+
         }
 
         private void bStart_Click(object sender, EventArgs e)
@@ -53,8 +55,8 @@
         {
             tClock.Stop();
             tClock.Start();
-            if((e.KeyChar >= '0') & (e.KeyChar <= '9') | (e.KeyChar == (char)8))
-                    {
+            if ((e.KeyChar >= '0') & (e.KeyChar <= '9') | (e.KeyChar == (char)8))
+            {
                 return;
             }
             else
@@ -64,6 +66,13 @@
                 tClock.Start();
                 e.KeyChar = (char)0;
             }
+        }
+
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            string s;
+            s = (System.DateTime.Now - MajorObject.GetTime()).ToString();
+            MessageBox.Show(s, "Час роботи програми");
         }
     }
 }
