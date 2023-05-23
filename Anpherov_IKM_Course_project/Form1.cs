@@ -1,8 +1,11 @@
-namespace Anpherov_IKM_Course_project
+п»їnamespace Anpherov_IKM_Course_project
 {
     public partial class Form1 : Form
     {
+        internal MajorWork MajorObject { get; private set; }
+
         private bool Mode;
+        private MajorWork MojorObject;
         public Form1()
         {
             InitializeComponent();
@@ -11,13 +14,18 @@ namespace Anpherov_IKM_Course_project
         private void tClock_Tick(object sender, EventArgs e)
         {
             tClock.Stop();
-            MessageBox.Show("Минуло 25 секунд", "Увага");
+            MessageBox.Show("РњРёРЅСѓР»Рѕ 25 СЃРµРєСѓРЅРґ","РЈРІР°РіР°");
             tClock.Start();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            About A = new About();
+            A.tAbout.Start();
+            A.ShowDialog();
+            MajorObject = new MajorWork();  
             this.Mode = true;
+            
         }
 
         private void bStart_Click(object sender, EventArgs e)
@@ -26,15 +34,18 @@ namespace Anpherov_IKM_Course_project
             {
                 tbInput.Enabled = true;
                 tClock.Start();
-                bStart.Text = "Стоп";
+                bStart.Text = "РЎС‚РѕРї";
                 this.Mode = false;
             }
             else
             {
                 tbInput.Enabled = false;
                 tClock.Stop();
-                bStart.Text = "Пуск";
+                bStart.Text = "РџСѓСЃРє";
                 this.Mode = true;
+                MajorObject.Write(tbInput.Text);
+                MajorObject.Task();
+                label1.Text = MajorObject.Read();
             }
         }
 
@@ -49,7 +60,7 @@ namespace Anpherov_IKM_Course_project
             else
             {
                 tClock.Stop();
-                MessageBox.Show("Неправильний символ", "Помилка");
+                MessageBox.Show("РќРµРїСЂР°РІРёР»СЊРЅРёР№ СЃРёРјРІРѕР»", "РџРѕРјРёР»РєР°");
                 tClock.Start();
                 e.KeyChar = (char)0;
             }
