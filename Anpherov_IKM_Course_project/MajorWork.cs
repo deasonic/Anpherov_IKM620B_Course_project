@@ -11,6 +11,15 @@ namespace Anpherov_IKM_Course_project
         private System.DateTime TimeBegin;
         private string Data;
         private string Result;
+        private string SaveFileName;
+        private string OpenFileName;
+        public void WriteSaveFileName(string S)
+        { this.SaveFileName = S; 
+        }
+        public void WriteOpenFileName(string S)
+        {
+            this.OpenFileName = S;
+        }
         public void SetTime()
         {
             this.TimeBegin = System.DateTime.Now;
