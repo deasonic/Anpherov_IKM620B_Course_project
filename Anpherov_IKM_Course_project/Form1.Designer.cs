@@ -95,7 +95,6 @@
             menuStrip1.Size = new Size(813, 24);
             menuStrip1.TabIndex = 3;
             menuStrip1.Text = "menuStrip1";
-
             // 
             // файлToolStripMenuItem
             // 
@@ -108,51 +107,53 @@
             // 
             новийToolStripMenuItem.Name = "новийToolStripMenuItem";
             новийToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.N;
-            новийToolStripMenuItem.Size = new Size(165, 22);
+            новийToolStripMenuItem.Size = new Size(180, 22);
             новийToolStripMenuItem.Text = "Новий";
+            новийToolStripMenuItem.Click += новийToolStripMenuItem_Click;
             // 
             // toolStripSeparator1
             // 
             toolStripSeparator1.Name = "toolStripSeparator1";
-            toolStripSeparator1.Size = new Size(162, 6);
+            toolStripSeparator1.Size = new Size(177, 6);
             // 
             // відкритиToolStripMenuItem
             // 
             відкритиToolStripMenuItem.Name = "відкритиToolStripMenuItem";
             відкритиToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.O;
-            відкритиToolStripMenuItem.Size = new Size(165, 22);
+            відкритиToolStripMenuItem.Size = new Size(180, 22);
             відкритиToolStripMenuItem.Text = "Відкрити";
             відкритиToolStripMenuItem.Click += відкритиToolStripMenuItem_Click;
             // 
             // toolStripSeparator2
             // 
             toolStripSeparator2.Name = "toolStripSeparator2";
-            toolStripSeparator2.Size = new Size(162, 6);
+            toolStripSeparator2.Size = new Size(177, 6);
             // 
             // зберегтиToolStripMenuItem
             // 
             зберегтиToolStripMenuItem.Name = "зберегтиToolStripMenuItem";
             зберегтиToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.S;
-            зберегтиToolStripMenuItem.Size = new Size(165, 22);
+            зберегтиToolStripMenuItem.Size = new Size(180, 22);
             зберегтиToolStripMenuItem.Text = "Зберегти";
+            зберегтиToolStripMenuItem.Click += зберегтиToolStripMenuItem_Click;
             // 
             // зберегтиЯкToolStripMenuItem
             // 
             зберегтиЯкToolStripMenuItem.Name = "зберегтиЯкToolStripMenuItem";
-            зберегтиЯкToolStripMenuItem.Size = new Size(165, 22);
+            зберегтиЯкToolStripMenuItem.Size = new Size(180, 22);
             зберегтиЯкToolStripMenuItem.Text = "Зберегти як";
             зберегтиЯкToolStripMenuItem.Click += зберегтиЯкToolStripMenuItem_Click;
             // 
             // toolStripSeparator3
             // 
             toolStripSeparator3.Name = "toolStripSeparator3";
-            toolStripSeparator3.Size = new Size(162, 6);
+            toolStripSeparator3.Size = new Size(177, 6);
             // 
             // вихідToolStripMenuItem
             // 
             вихідToolStripMenuItem.Name = "вихідToolStripMenuItem";
             вихідToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.Q;
-            вихідToolStripMenuItem.Size = new Size(165, 22);
+            вихідToolStripMenuItem.Size = new Size(180, 22);
             вихідToolStripMenuItem.Text = "Вихід";
             вихідToolStripMenuItem.Click += вихідToolStripMenuItem_Click;
             // 
@@ -197,9 +198,14 @@
             проПрограмуToolStripMenuItem.Text = "Про програму";
             проПрограмуToolStripMenuItem.Click += проПрограмуToolStripMenuItem_Click;
             // 
+            // sfdSave
+            // 
+            sfdSave.Filter = "рабочие файлы|*.SoM|Все файлы|*.*";
+            // 
             // ofdOpen
             // 
             ofdOpen.FileName = "openFileDialog1";
+            ofdOpen.Filter = "рабочие файлы|*.SoM|Все файлы|*.*";
             // 
             // Form1
             // 
@@ -213,6 +219,7 @@
             MainMenuStrip = menuStrip1;
             Name = "Form1";
             Text = "Form1";
+            FormClosing += Form1_FormClosing;
             FormClosed += Form1_FormClosed;
             Load += Form1_Load;
             menuStrip1.ResumeLayout(false);

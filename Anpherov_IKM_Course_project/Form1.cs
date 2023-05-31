@@ -93,7 +93,8 @@
         {
             if (sfdSave.ShowDialog() == DialogResult.OK)
             {
-             MajorObject.WriteSaveFileName(sfdSave.FileName);
+                MajorObject.WriteSaveFileName(sfdSave.FileName);
+                MajorObject.Geterator();
                 MajorObject.SaveToFile();
             }
         }
@@ -125,6 +126,26 @@
             MessageBox.Show(disk, "Накопичувачі");
         }
 
-        
+        private void зберегтиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (MajorObject.SaveFileNameExists())
+                MajorObject.SaveToFile();
+            else
+                зберегтиЯкToolStripMenuItem_Click(sender, e);
+        }
+
+        private void новийToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MajorObject.NewRec();
+            tbInput.Clear();
+            label1.Text = "";
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (MajorObject.Modify)
+                if (MessageBox.Show("Дані не були збережені. Продовжити вихід?", "УВАГА", MessageBoxButtons.YesNo) == DialogResult.No)
+                    e.Cancel = true;
+        }
     }
 }
