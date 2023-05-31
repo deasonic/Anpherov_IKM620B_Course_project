@@ -31,5 +31,10 @@ namespace Anpherov_IKM_Course_project
         {
             Close();
         }
+
+        private void About_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

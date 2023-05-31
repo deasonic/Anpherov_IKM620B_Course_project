@@ -22,6 +22,7 @@
         {
             MajorObject = new MajorWork();
             MajorObject.SetTime();
+            MajorObject.Modify = false;
             About A = new About();
             A.tAbout.Start();
             A.ShowDialog();
@@ -92,7 +93,8 @@
         {
             if (sfdSave.ShowDialog() == DialogResult.OK)
             {
-                MessageBox.Show(sfdSave.FileName);
+             MajorObject.WriteSaveFileName(sfdSave.FileName);
+                MajorObject.SaveToFile();
             }
         }
 
@@ -108,17 +110,21 @@
         {
             string[] Disks = System.IO.Directory.GetLogicalDrives();
             string disk = "";
-            for (int i=0; i<Disks.Length; i++)
-            { try
+            for (int i = 0; i < Disks.Length; i++)
+            {
+                try
                 {
                     System.IO.DriveInfo D = new System.IO.DriveInfo(Disks[i]);
                     disk += D.Name + "-" + (D.TotalSize / (1024 * 1024 * 1024)).ToString() + "-" + (D.TotalFreeSpace / (1024 * 1024 * 1024)).ToString() + "GB" + (char)13;
                 }
-                catch {
+                catch
+                {
                     disk += Disks[i] + "- не готовий" + (char)13;
                 }
-                    }
+            }
             MessageBox.Show(disk, "Накопичувачі");
         }
+
+        
     }
 }

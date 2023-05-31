@@ -68,6 +68,7 @@
             Controls.Add(label1);
             Name = "About";
             Text = "About";
+            Load += About_Load;
             ResumeLayout(false);
             PerformLayout();
         }
