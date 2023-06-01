@@ -36,6 +36,7 @@
             if (Mode)
             {
                 tbInput.Enabled = true;
+                tbInput.Focus();
                 tClock.Start();
                 bStart.Text = "Стоп";
                 this.Mode = false;
@@ -94,7 +95,7 @@
             if (sfdSave.ShowDialog() == DialogResult.OK)
             {
                 MajorObject.WriteSaveFileName(sfdSave.FileName);
-                MajorObject.Geterator();
+                MajorObject.Generator();
                 MajorObject.SaveToFile();
             }
         }
@@ -103,7 +104,8 @@
         {
             if (ofdOpen.ShowDialog() == DialogResult.OK)
             {
-                MessageBox.Show(ofdOpen.FileName);
+                MajorObject.WriteOpenFileName(ofdOpen.FileName);
+                MajorObject.ReadFromFile(dgwOpen);
             }
         }
 
@@ -146,6 +148,11 @@
             if (MajorObject.Modify)
                 if (MessageBox.Show("Дані не були збережені. Продовжити вихід?", "УВАГА", MessageBoxButtons.YesNo) == DialogResult.No)
                     e.Cancel = true;
+        }
+
+        private void bSearch_Click(object sender, EventArgs e)
+        {
+            MajorObject.Find(tbSearch.Text);
         }
     }
 }

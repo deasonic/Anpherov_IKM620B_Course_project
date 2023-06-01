@@ -51,7 +51,11 @@
             проПрограмуToolStripMenuItem = new ToolStripMenuItem();
             sfdSave = new SaveFileDialog();
             ofdOpen = new OpenFileDialog();
+            dgwOpen = new DataGridView();
+            bSearch = new Button();
+            tbSearch = new TextBox();
             menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgwOpen).BeginInit();
             SuspendLayout();
             // 
             // tbInput
@@ -107,53 +111,53 @@
             // 
             новийToolStripMenuItem.Name = "новийToolStripMenuItem";
             новийToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.N;
-            новийToolStripMenuItem.Size = new Size(180, 22);
+            новийToolStripMenuItem.Size = new Size(165, 22);
             новийToolStripMenuItem.Text = "Новий";
             новийToolStripMenuItem.Click += новийToolStripMenuItem_Click;
             // 
             // toolStripSeparator1
             // 
             toolStripSeparator1.Name = "toolStripSeparator1";
-            toolStripSeparator1.Size = new Size(177, 6);
+            toolStripSeparator1.Size = new Size(162, 6);
             // 
             // відкритиToolStripMenuItem
             // 
             відкритиToolStripMenuItem.Name = "відкритиToolStripMenuItem";
             відкритиToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.O;
-            відкритиToolStripMenuItem.Size = new Size(180, 22);
+            відкритиToolStripMenuItem.Size = new Size(165, 22);
             відкритиToolStripMenuItem.Text = "Відкрити";
             відкритиToolStripMenuItem.Click += відкритиToolStripMenuItem_Click;
             // 
             // toolStripSeparator2
             // 
             toolStripSeparator2.Name = "toolStripSeparator2";
-            toolStripSeparator2.Size = new Size(177, 6);
+            toolStripSeparator2.Size = new Size(162, 6);
             // 
             // зберегтиToolStripMenuItem
             // 
             зберегтиToolStripMenuItem.Name = "зберегтиToolStripMenuItem";
             зберегтиToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.S;
-            зберегтиToolStripMenuItem.Size = new Size(180, 22);
+            зберегтиToolStripMenuItem.Size = new Size(165, 22);
             зберегтиToolStripMenuItem.Text = "Зберегти";
             зберегтиToolStripMenuItem.Click += зберегтиToolStripMenuItem_Click;
             // 
             // зберегтиЯкToolStripMenuItem
             // 
             зберегтиЯкToolStripMenuItem.Name = "зберегтиЯкToolStripMenuItem";
-            зберегтиЯкToolStripMenuItem.Size = new Size(180, 22);
+            зберегтиЯкToolStripMenuItem.Size = new Size(165, 22);
             зберегтиЯкToolStripMenuItem.Text = "Зберегти як";
             зберегтиЯкToolStripMenuItem.Click += зберегтиЯкToolStripMenuItem_Click;
             // 
             // toolStripSeparator3
             // 
             toolStripSeparator3.Name = "toolStripSeparator3";
-            toolStripSeparator3.Size = new Size(177, 6);
+            toolStripSeparator3.Size = new Size(162, 6);
             // 
             // вихідToolStripMenuItem
             // 
             вихідToolStripMenuItem.Name = "вихідToolStripMenuItem";
             вихідToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.Q;
-            вихідToolStripMenuItem.Size = new Size(180, 22);
+            вихідToolStripMenuItem.Size = new Size(165, 22);
             вихідToolStripMenuItem.Text = "Вихід";
             вихідToolStripMenuItem.Click += вихідToolStripMenuItem_Click;
             // 
@@ -207,11 +211,40 @@
             ofdOpen.FileName = "openFileDialog1";
             ofdOpen.Filter = "рабочие файлы|*.SoM|Все файлы|*.*";
             // 
+            // dgwOpen
+            // 
+            dgwOpen.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgwOpen.Location = new Point(486, 119);
+            dgwOpen.Name = "dgwOpen";
+            dgwOpen.RowTemplate.Height = 25;
+            dgwOpen.Size = new Size(240, 150);
+            dgwOpen.TabIndex = 4;
+            // 
+            // bSearch
+            // 
+            bSearch.Location = new Point(651, 275);
+            bSearch.Name = "bSearch";
+            bSearch.Size = new Size(75, 23);
+            bSearch.TabIndex = 5;
+            bSearch.Text = "Пошук";
+            bSearch.UseVisualStyleBackColor = true;
+            bSearch.Click += bSearch_Click;
+            // 
+            // tbSearch
+            // 
+            tbSearch.Location = new Point(626, 304);
+            tbSearch.Name = "tbSearch";
+            tbSearch.Size = new Size(100, 23);
+            tbSearch.TabIndex = 6;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(813, 432);
+            Controls.Add(tbSearch);
+            Controls.Add(bSearch);
+            Controls.Add(dgwOpen);
             Controls.Add(bStart);
             Controls.Add(label1);
             Controls.Add(tbInput);
@@ -224,6 +257,7 @@
             Load += Form1_Load;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgwOpen).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -252,5 +286,8 @@
         private ToolStripMenuItem проПрограмуToolStripMenuItem;
         private SaveFileDialog sfdSave;
         private OpenFileDialog ofdOpen;
+        private DataGridView dgwOpen;
+        private Button bSearch;
+        private TextBox tbSearch;
     }
 }
