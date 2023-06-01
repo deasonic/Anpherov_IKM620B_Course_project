@@ -1,4 +1,17 @@
-﻿namespace Anpherov_IKM_Course_project
+﻿using Microsoft.VisualBasic;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using Timer = System.Windows.Forms.Timer;
+
+namespace Anpherov_IKM_Course_project
 {
     public partial class Form1 : Form
     {
@@ -6,9 +19,30 @@
 
         private bool Mode;
         private MajorWork MojorObject;
+        ToolStripLabel dateLabel;
+        ToolStripLabel timeLabel;
+        ToolStripLabel infoLabel;
+        Timer timer;
         public Form1()
         {
             InitializeComponent();
+            infoLabel = new ToolStripLabel();
+            infoLabel.Text = "Поточні дата і час:";
+            dateLabel= new ToolStripLabel();
+            timeLabel = new ToolStripLabel();
+
+            statusStrip1.Items.Add(infoLabel);
+            statusStrip1.Items.Add(dateLabel);
+            statusStrip1.Items.Add(timeLabel);
+
+            timer = new Timer() { Interval = 1000 }; 
+            timer.Tick += timer_Tick;
+            timer.Start();
+        }
+        void timer_Tick(object sender, EventArgs e)
+        {
+            dateLabel.Text = DateTime.Now.ToLongDateString();
+            timeLabel.Text= DateTime.Now.ToLongTimeString();
         }
 
         private void tClock_Tick(object sender, EventArgs e)
@@ -27,6 +61,9 @@
             A.tAbout.Start();
             A.ShowDialog();
             this.Mode = true;
+
+            toolTip1.SetToolTip(bSearch, "Натисніть на кнопку для пошуку");
+            toolTip1.IsBalloon = true;
 
 
         }
@@ -87,6 +124,7 @@
         private void проПрограмуToolStripMenuItem_Click(object sender, EventArgs e)
         {
             About A = new About();
+            A.progressBar1.Hide();
             A.ShowDialog();
         }
 
@@ -153,6 +191,11 @@
         private void bSearch_Click(object sender, EventArgs e)
         {
             MajorObject.Find(tbSearch.Text);
+        }
+
+        private void statusStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
         }
     }
 }

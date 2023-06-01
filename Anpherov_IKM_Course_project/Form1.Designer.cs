@@ -54,23 +54,31 @@
             dgwOpen = new DataGridView();
             bSearch = new Button();
             tbSearch = new TextBox();
+            toolTip1 = new ToolTip(components);
+            tabControl1 = new TabControl();
+            tabPage1 = new TabPage();
+            tabPage2 = new TabPage();
+            statusStrip1 = new StatusStrip();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgwOpen).BeginInit();
+            tabControl1.SuspendLayout();
+            tabPage1.SuspendLayout();
+            tabPage2.SuspendLayout();
             SuspendLayout();
             // 
             // tbInput
             // 
             tbInput.Enabled = false;
-            tbInput.Location = new Point(330, 150);
+            tbInput.Location = new Point(148, 98);
             tbInput.Name = "tbInput";
-            tbInput.Size = new Size(100, 23);
+            tbInput.Size = new Size(408, 23);
             tbInput.TabIndex = 0;
             tbInput.KeyPress += tbInput_KeyPress;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(363, 119);
+            label1.Location = new Point(354, 46);
             label1.Name = "label1";
             label1.Size = new Size(38, 15);
             label1.TabIndex = 1;
@@ -78,9 +86,9 @@
             // 
             // bStart
             // 
-            bStart.Location = new Point(339, 254);
+            bStart.Location = new Point(313, 150);
             bStart.Name = "bStart";
-            bStart.Size = new Size(75, 23);
+            bStart.Size = new Size(115, 35);
             bStart.TabIndex = 2;
             bStart.Text = "Пуск";
             bStart.UseVisualStyleBackColor = true;
@@ -214,15 +222,15 @@
             // dgwOpen
             // 
             dgwOpen.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgwOpen.Location = new Point(486, 119);
+            dgwOpen.Location = new Point(8, 18);
             dgwOpen.Name = "dgwOpen";
             dgwOpen.RowTemplate.Height = 25;
-            dgwOpen.Size = new Size(240, 150);
+            dgwOpen.Size = new Size(510, 334);
             dgwOpen.TabIndex = 4;
             // 
             // bSearch
             // 
-            bSearch.Location = new Point(651, 275);
+            bSearch.Location = new Point(626, 55);
             bSearch.Name = "bSearch";
             bSearch.Size = new Size(75, 23);
             bSearch.TabIndex = 5;
@@ -232,22 +240,63 @@
             // 
             // tbSearch
             // 
-            tbSearch.Location = new Point(626, 304);
+            tbSearch.Location = new Point(562, 84);
             tbSearch.Name = "tbSearch";
-            tbSearch.Size = new Size(100, 23);
+            tbSearch.Size = new Size(208, 23);
             tbSearch.TabIndex = 6;
+            // 
+            // tabControl1
+            // 
+            tabControl1.Controls.Add(tabPage1);
+            tabControl1.Controls.Add(tabPage2);
+            tabControl1.Location = new Point(0, 27);
+            tabControl1.Name = "tabControl1";
+            tabControl1.SelectedIndex = 0;
+            tabControl1.Size = new Size(813, 405);
+            tabControl1.TabIndex = 7;
+            // 
+            // tabPage1
+            // 
+            tabPage1.Controls.Add(statusStrip1);
+            tabPage1.Controls.Add(tbInput);
+            tabPage1.Controls.Add(bStart);
+            tabPage1.Controls.Add(label1);
+            tabPage1.Location = new Point(4, 24);
+            tabPage1.Name = "tabPage1";
+            tabPage1.Padding = new Padding(3);
+            tabPage1.Size = new Size(805, 377);
+            tabPage1.TabIndex = 0;
+            tabPage1.Text = "Введення даних";
+            tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            tabPage2.Controls.Add(dgwOpen);
+            tabPage2.Controls.Add(tbSearch);
+            tabPage2.Controls.Add(bSearch);
+            tabPage2.Location = new Point(4, 24);
+            tabPage2.Name = "tabPage2";
+            tabPage2.Padding = new Padding(3);
+            tabPage2.Size = new Size(805, 377);
+            tabPage2.TabIndex = 1;
+            tabPage2.Text = "Робота з файлами";
+            tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // statusStrip1
+            // 
+            statusStrip1.Location = new Point(3, 352);
+            statusStrip1.Name = "statusStrip1";
+            statusStrip1.Size = new Size(799, 22);
+            statusStrip1.TabIndex = 3;
+            statusStrip1.Text = "statusStrip1";
+            statusStrip1.ItemClicked += statusStrip1_ItemClicked;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(813, 432);
-            Controls.Add(tbSearch);
-            Controls.Add(bSearch);
-            Controls.Add(dgwOpen);
-            Controls.Add(bStart);
-            Controls.Add(label1);
-            Controls.Add(tbInput);
+            Controls.Add(tabControl1);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
             Name = "Form1";
@@ -258,6 +307,11 @@
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgwOpen).EndInit();
+            tabControl1.ResumeLayout(false);
+            tabPage1.ResumeLayout(false);
+            tabPage1.PerformLayout();
+            tabPage2.ResumeLayout(false);
+            tabPage2.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -289,5 +343,10 @@
         private DataGridView dgwOpen;
         private Button bSearch;
         private TextBox tbSearch;
+        private ToolTip toolTip1;
+        private TabControl tabControl1;
+        private TabPage tabPage1;
+        private TabPage tabPage2;
+        private StatusStrip statusStrip1;
     }
 }
