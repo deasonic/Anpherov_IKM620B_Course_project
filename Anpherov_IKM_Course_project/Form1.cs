@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 using Timer = System.Windows.Forms.Timer;
 
 namespace Anpherov_IKM_Course_project
@@ -18,6 +19,7 @@ namespace Anpherov_IKM_Course_project
         internal MajorWork MajorObject { get; private set; }
 
         private bool Mode;
+        private SaveFileDialog sf;
         private MajorWork MojorObject;
         ToolStripLabel dateLabel;
         ToolStripLabel timeLabel;
@@ -289,17 +291,17 @@ namespace Anpherov_IKM_Course_project
             {
                 MajorObject.smyQueue[0] = null;
 
-                
+
                 for (int i = 0; i < MajorObject.smyQueue.Length - 1; i++)
                 {
                     MajorObject.smyQueue[i] = MajorObject.smyQueue[i + 1];
                 }
-               
+
                 if (MajorObject.myQueue.Count > 0)
                 {
                     MessageBox.Show("Dequeue " + MajorObject.myQueue.Dequeue());
                 }
-                
+
                 LabelQueue.Text = "";
                 for (int i = 0; i < MajorObject.smyQueue.Length - 1; i++)
                 {
@@ -314,6 +316,40 @@ namespace Anpherov_IKM_Course_project
                 }
                 if (MajorObject.myQueue.Count == 0)
                     MessageBox.Show("\nЧерга порожня!");
+            }
+        }
+
+        private void зберегтиЯкToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog sf = new SaveFileDialog();
+
+            sf.Filter = @"Текстовий файл (*.txt)|*.txt|Текстові файлиTXT(*.txt)|*.txt|CSV-файл (*.csv)|*.csv|Bin-файл (*.bin)|*.bin";
+
+            if (sf.ShowDialog() == DialogResult.OK)
+            {
+                MajorObject.WriteSaveTextFileName(sf.FileName);
+                MajorObject.SaveToTextFile(sf.FileName, dgwOpen);
+            }
+        }
+
+        private void зберегтиToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (MajorObject.SaveTextFileNameExists())
+
+                MajorObject.SaveToTextFile(MajorObject.ReadSaveTextFileName(), dgwOpen);
+            else
+                зберегтиЯкToolStripMenuItem1_Click(sender, e);
+        }
+
+        private void відкритиToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog o = new OpenFileDialog();
+
+            o.Filter = @"Текстовий файл (*.txt)|*.txt|Текстовий файлTXT(*.txt)|*.txt|CSV-файл (*.csv)|*.csv|Bin-файл (*.bin)|*.bin";
+
+            if (o.ShowDialog() == DialogResult.OK)
+            {
+                richTextBox1.Text = File.ReadAllText(o.FileName, Encoding.Default);
             }
         }
     }
