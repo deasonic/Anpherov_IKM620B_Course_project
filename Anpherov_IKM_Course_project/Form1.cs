@@ -28,21 +28,21 @@ namespace Anpherov_IKM_Course_project
             InitializeComponent();
             infoLabel = new ToolStripLabel();
             infoLabel.Text = "Поточні дата і час:";
-            dateLabel= new ToolStripLabel();
+            dateLabel = new ToolStripLabel();
             timeLabel = new ToolStripLabel();
 
             statusStrip1.Items.Add(infoLabel);
             statusStrip1.Items.Add(dateLabel);
             statusStrip1.Items.Add(timeLabel);
 
-            timer = new Timer() { Interval = 1000 }; 
+            timer = new Timer() { Interval = 1000 };
             timer.Tick += timer_Tick;
             timer.Start();
         }
         void timer_Tick(object sender, EventArgs e)
         {
             dateLabel.Text = DateTime.Now.ToLongDateString();
-            timeLabel.Text= DateTime.Now.ToLongTimeString();
+            timeLabel.Text = DateTime.Now.ToLongTimeString();
         }
 
         private void tClock_Tick(object sender, EventArgs e)
@@ -193,9 +193,128 @@ namespace Anpherov_IKM_Course_project
             MajorObject.Find(tbSearch.Text);
         }
 
-        private void statusStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        private void Push_Click(object sender, EventArgs e)
         {
+            MajorObject.myStack.Push(Stacktb.Text);
+            MajorObject.myArr[MajorObject.myArr.Length - MajorObject.myStack.Count] = Stacktb.Text;
+            LabelStack.Text = "";
 
+            for (int i = 0; i < MajorObject.myArr.Length; i++)
+            {
+                if (MajorObject.myArr[i] != null)
+                {
+                    LabelStack.Text += MajorObject.myArr[i] + (char)13;
+                }
+                else
+                {
+                    continue;
+                }
+            }
+        }
+
+        private void Peek_Click(object sender, EventArgs e)
+        {
+            if (MajorObject.myStack.Count > 0)
+            {
+                MessageBox.Show("Peek" + MajorObject.myStack.Peek());
+            }
+            if (MajorObject.myStack.Count == 0)
+                MessageBox.Show("\nСтек пустий");
+        }
+
+        private void Pop_Click(object sender, EventArgs e)
+        {
+            if (MajorObject.myStack.Count == 0)
+                MessageBox.Show("\nСтек пустий!");
+            else
+            {
+                MajorObject.myArr[MajorObject.myArr.Length - MajorObject.myStack.Count] = null;
+
+                if (MajorObject.myStack.Count > 0)
+                {
+                    MessageBox.Show("Pop " + MajorObject.myStack.Pop());
+                }
+                LabelStack.Text = "";
+                for (int i = 0; i < MajorObject.myArr.Length; i++)
+                {
+                    if (MajorObject.myArr[i] != null)
+
+                    {
+                        LabelStack.Text += MajorObject.myArr[i] + (char)13;
+                    }
+                    else
+                    {
+                        continue;
+                    }
+                }
+                if (MajorObject.myStack.Count == 0)
+                    MessageBox.Show("\nСтек пустий!");
+            }
+        }
+
+        private void Enqueue_Click(object sender, EventArgs e)
+        {
+            MajorObject.myQueue.Enqueue(Queuetb.Text);
+            MajorObject.smyQueue[MajorObject.myQueue.Count - 1] = Queuetb.Text;
+            LabelQueue.Text = "";
+            for (int i = 0; i < MajorObject.smyQueue.Length; i++)
+            {
+                if (MajorObject.smyQueue[i] != null)
+                {
+                    LabelQueue.Text += MajorObject.smyQueue[i] + (char)13;
+                }
+                else
+                {
+                    continue;
+                }
+            }
+        }
+
+        private void Peek_q_Click(object sender, EventArgs e)
+        {
+            if (MajorObject.myQueue.Count > 0)
+            {
+                MessageBox.Show("Peek " + MajorObject.myQueue.Peek());
+            }
+            if (MajorObject.myQueue.Count == 0)
+                MessageBox.Show("\nЧерга порожня!");
+        }
+
+        private void Dequeue_Click(object sender, EventArgs e)
+        {
+            if (MajorObject.myQueue.Count == 0)
+
+                MessageBox.Show("\nЧерга порожня!");
+            else
+            {
+                MajorObject.smyQueue[0] = null;
+
+                
+                for (int i = 0; i < MajorObject.smyQueue.Length - 1; i++)
+                {
+                    MajorObject.smyQueue[i] = MajorObject.smyQueue[i + 1];
+                }
+               
+                if (MajorObject.myQueue.Count > 0)
+                {
+                    MessageBox.Show("Dequeue " + MajorObject.myQueue.Dequeue());
+                }
+                
+                LabelQueue.Text = "";
+                for (int i = 0; i < MajorObject.smyQueue.Length - 1; i++)
+                {
+                    if (MajorObject.smyQueue[i] != null)
+                    {
+                        LabelQueue.Text += MajorObject.smyQueue[i] + (char)13;
+                    }
+                    else
+                    {
+                        continue;
+                    }
+                }
+                if (MajorObject.myQueue.Count == 0)
+                    MessageBox.Show("\nЧерга порожня!");
+            }
         }
     }
 }
